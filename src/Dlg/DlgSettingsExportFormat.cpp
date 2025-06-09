@@ -516,7 +516,7 @@ void DlgSettingsExportFormat::createXLabel (QGridLayout *layoutHeader,
 QString DlgSettingsExportFormat::exportedTextToExportedHtml (const QString &text,
                                                              const QString &color) const
 {
-  QRegExp re ("<br>$");
+  QRegularExpression re ("<br>$");
 
   QString textCopy (text);
   QString replaced = textCopy

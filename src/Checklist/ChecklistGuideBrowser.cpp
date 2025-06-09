@@ -11,6 +11,7 @@
 #include "EngaugeAssert.h"
 #include "Logger.h"
 #include <QDebug>
+#include <QRegularExpression>
 
 const int MIN_WIDTH_BROWSER = 340; // Make just big enough that each "More..." appears on same line
 
@@ -25,26 +26,27 @@ ChecklistGuideBrowser::ChecklistGuideBrowser ()
 QString ChecklistGuideBrowser::ahref (QString &html,
                                       const QString &name) const
 {
+
   LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuideBrowser::bindToDocument";
 
-  QString expression = QString ("%1%2%3")
-                       .arg (TAG_AHREF_DELIMITER_START)
-                       .arg (name)
-                       .arg (TAG_AHREF_DELIMITER_END);
+  QString expression = QString("%1%2%3").arg(TAG_AHREF_DELIMITER_START,
+                                               name,
+                                               TAG_AHREF_DELIMITER_END);
 
-  QString link;
-  if (name == m_anchor) {
+    QString link;
+    if (name == m_anchor) {
+        // Click on this hyperlink to reload the page without details under this link, since anchor is empty
+        link = QString("<a href="
+                       "#"
+                       ">Less ...</a>");
 
-    // Click on this hyperlink to reload the page without details under this link, since anchor is empty
-    link = QString ("<a href=""#"">Less ...</a>");
-
-  } else {
-
-    // Click on this hyperlink to reload the page with details under this link
-    link = QString ("<a href=""#%1"">More ...</a>")
-           .arg (name);
-
-  }
+    } else {
+        // Click on this hyperlink to reload the page with details under this link
+        link = QString("<a href="
+                       "#%1"
+                       ">More ...</a>")
+                   .arg(name);
+    }
 
   html.replace (expression, link);
 
@@ -57,16 +59,21 @@ void ChecklistGuideBrowser::check (QString &html,
 {
   LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuideBrowser::check";
 
-  QString tag = QString ("%1%2%3")
-                .arg (TAG_ANCHOR_DELIMITER_START)
-                .arg (anchor)
-                .arg (TAG_ANCHOR_DELIMITER_END);
+  QString tag = QString("%1%2%3").arg(TAG_ANCHOR_DELIMITER_START,
+                                        anchor,
+                                        TAG_ANCHOR_DELIMITER_END);
 
-  if (isChecked) {
-    html.replace (tag, "<img src="":/engauge/img/16-checked.png"">");
-  } else {
-    html.replace (tag, "<img src="":/engauge/img/16-unchecked.png"">");
-  }
+    if (isChecked) {
+        html.replace(tag,
+                     "<img src="
+                     ":/engauge/img/16-checked.png"
+                     ">");
+    } else {
+        html.replace(tag,
+                     "<img src="
+                     ":/engauge/img/16-unchecked.png"
+                     ">");
+    }
 }
 
 void ChecklistGuideBrowser::divHide (QString &html,
@@ -76,19 +83,18 @@ void ChecklistGuideBrowser::divHide (QString &html,
                               << " anchor=" << anchor.toLatin1().data();
 
   // Remove everything between the start and end tags, inclusive
-  QString expression = QString ("\\%1%2\\%3.*\\%4%5\\%6")
-                       .arg (TAG_DIV_DELIMITER_START)
-                       .arg (anchor)
-                       .arg (TAG_DIV_DELIMITER_END)
-                       .arg (TAG_DIV_DELIMITER_START_SLASH)
-                       .arg (anchor)
-                       .arg (TAG_DIV_DELIMITER_END);
-  QRegExp regExp  (expression);
-  html.replace (regExp, "");
+  QString expression = QString("\\%1%2\\%3.*\\%4%5\\%6")
+                           .arg(TAG_DIV_DELIMITER_START,
+                                anchor,
+                                TAG_DIV_DELIMITER_END,
+                                TAG_DIV_DELIMITER_START_SLASH,
+                                anchor,
+                                TAG_DIV_DELIMITER_END);
+  QRegularExpression regExp(expression);
+  html.replace(regExp, "");
 }
 
-void ChecklistGuideBrowser::divShow (QString &html,
-                                     const QString &anchor) const
+void ChecklistGuideBrowser::divShow(QString &html, const QString &anchor) const
 {
   LOG4CPP_INFO_S ((*mainCat)) << "ChecklistGuideBrowser::divShow"
                               << " anchor=" << anchor.toLatin1().data();
@@ -96,16 +102,12 @@ void ChecklistGuideBrowser::divShow (QString &html,
   if (!anchor.isEmpty ()) {
 
     // Remove the start and end tags, but leave the text in between
-    QString expressionStart = QString ("\\%1%2\\%3")
-                              .arg (TAG_DIV_DELIMITER_START)
-                              .arg (anchor)
-                              .arg (TAG_DIV_DELIMITER_END);
-    QString expressionEnd = QString ("\\%1%2\\%3")
-                            .arg (TAG_DIV_DELIMITER_START_SLASH)
-                            .arg (anchor)
-                            .arg (TAG_DIV_DELIMITER_END);
-    QRegExp regExpStart (expressionStart);
-    QRegExp regExpEnd (expressionEnd);
+    QString expressionStart = QString("\\%1%2\\%3")
+                                  .arg(TAG_DIV_DELIMITER_START, anchor, TAG_DIV_DELIMITER_END);
+    QString expressionEnd = QString("\\%1%2\\%3")
+                                .arg(TAG_DIV_DELIMITER_START_SLASH, anchor, TAG_DIV_DELIMITER_END);
+    QRegularExpression regExpStart(expressionStart);
+    QRegularExpression regExpEnd(expressionEnd);
     html.replace (regExpStart, "");
     html.replace (regExpEnd, "");
   }
