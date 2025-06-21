@@ -9,7 +9,7 @@
 #include "Logger.h"
 #include "MainWindow.h"
 #include "PdfCropping.h"
-#include "poppler-qt5.h"
+#include "poppler-qt6.h"
 #include <QApplication>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsScene>
