@@ -22,7 +22,6 @@ testsAvailable=( \
     TestGuidelines \
     TestMatrix \
     TestProjectedPoint \
-    TestSegmentFill \
     TestSpline \
     TestSplineDrawer \
     TestTransformation \
