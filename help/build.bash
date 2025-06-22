@@ -8,7 +8,7 @@
 #
 # This version is for qt 5.12.0 or newer, for which qcollectiongenerator is deprecated in favor of
 # qhelpgenerator. Earlier versions of qcollectiongenerator fail since qch file is NOT generated
-VER=`qmake -query QT_VERSION`
+VER=`qmake6 -query QT_VERSION`
 MAJOR=$(echo $VER | cut -f1 -d. )
 MINOR=$(echo $VER | cut -f2 -d. )
 SUBMINOR=$(echo $VER | cut -f3 -d. )
