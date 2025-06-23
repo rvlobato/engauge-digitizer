@@ -30,7 +30,7 @@ bool ImportCroppingUtilPdf::applyImportCropping (bool isErrorReportRegressionTes
 
       // Try to read the file
       QApplication::setOverrideCursor (Qt::BusyCursor); // Since load could take a while
-      document = Document::load (fileName);
+      document = Document::load (fileName).get();
       QApplication::restoreOverrideCursor();
       if (document != nullptr) {
         if (!document->isLocked ()) {
