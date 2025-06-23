@@ -1066,7 +1066,7 @@ pdf {
     }
     DEFINES += "ENGAUGE_PDF"
     INCLUDEPATH += $$(POPPLER_INCLUDE)
-    LIBS += -L$$(POPPLER_LIB) -lpoppler -lpoppler-qt5
+    LIBS += -L$$(POPPLER_LIB) -lpoppler -lpoppler-qt6
     HEADERS += Dlg/DlgImportCroppingPdf.h \
                Import/ImportCroppingUtilPdf.h \
                Pdf/Pdf.h \

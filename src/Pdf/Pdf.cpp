@@ -7,7 +7,7 @@
 #include "DlgImportCroppingPdf.h"
 #include "ImportCroppingUtilPdf.h"
 #include "Pdf.h"
-#include "poppler-qt5.h"
+#include "poppler-qt6.h"
 #include <QApplication>
 #include <QImage>
 #include <QString>
