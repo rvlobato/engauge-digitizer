@@ -189,7 +189,7 @@ QImage DlgImportCroppingPdf::loadImage (int page1Based) const
   QImage image;
 
   int page0Based = page1Based - 1;
-  Page *page = m_document.page (page0Based);
+  Page *page = m_document.page (page0Based).get();
   if (page != nullptr) {
 
     image = page->renderToImage (m_resolution,

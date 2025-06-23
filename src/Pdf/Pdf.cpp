@@ -94,12 +94,12 @@ PdfReturn Pdf::loadWithoutCropping (const QString &fileName,
   if (fileName.right (4).toLower () == ".pdf") {
 
     // Try to read the file
-    Document *document = Document::load (fileName);
+    Document *document = Document::load (fileName).get();
 
     if (document != nullptr) {
       if (!document->isLocked ()) {
 
-        Page *page = document->page (FIRST_PAGE_1_BASED - 1);
+        Page *page = document->page (FIRST_PAGE_1_BASED - 1).get();
         if (page != nullptr) {
 
           image = page->renderToImage (resolution,
