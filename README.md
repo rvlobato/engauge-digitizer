@@ -7,6 +7,6 @@ project entirely, feel free to contact me and/or clone the files. Andreas
 Links                                                                            | Comments
 -------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 [Project](http://akhuettel.github.io/engauge-digitizer)                     | Explains what Engauge Digitizer does and how it is used                     |
-[Downloads](https://github.com/akhuettel/engauge-digitizer/releases/latest) | Files in the latest release                                                 |
-[![Linux build/test status](https://github.com/akhuettel/engauge-digitizer/actions/workflows/ci-test.yml/badge.svg)](https://travis-ci.com/github/akhuettel/engauge-digitizer)                                                           | Green when the latest source code builds and runs (tested on newest Ubuntu Linux)             |
+[Downloads](https://github.com/akhuettel/engauge-digitizer/tags) | Latest releases (source code downloads)                                                  |
+[![Linux build/test status](https://github.com/akhuettel/engauge-digitizer/actions/workflows/ci-test.yml/badge.svg)](https://github.com/akhuettel/engauge-digitizer/actions/workflows/ci-test.yml)                                                           | Green when the latest source code builds and runs (tested on newest Ubuntu Linux)             |
 [![DOI](https://zenodo.org/badge/26443394.svg)](https://zenodo.org/badge/latestdoi/26443394)                                                                                                                         | Suggested, but not required, for making a citation in scientific literature |
