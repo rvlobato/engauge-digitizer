@@ -12,16 +12,16 @@ This file gives details for building Engauge from source code.
 
 Windows - Steps to build and run engauge executable:
 ----------------------------------------------------
-These steps build and run, in Microsoft Windows, the standard engauge executable for digitizing data.
+These steps might build and run, in Microsoft Windows, the standard engauge executable for digitizing 
+data. Untested.
 
 Note that support for reading PDF files, using the Poppler library, has not been available in recent
 Engauge releases due to incompatibilities between recent libraries and the many software libraries 
 required by the Poppler library.
 
-1) Install the Visual Studio 2015 version of the Qt Open Source toolkit from http://www.qt.io. 
+1) Install the Visual Studio 2015 version (?) of the Qt6 Open Source toolkit from http://www.qt.io. 
 
-   Qt Open Source 5.2 and newer have been tested with Engauge. Qt Versions 5.1 and older do not offer
-   features added in version 5.2 that are required to build Engauge.
+   Qt 6.9 has been tested with Engauge (under Linux).
 
 2) Download and build fftw from http://www.fftw.org. Version 3.3.4 was tested with Engauge.
    
@@ -53,22 +53,22 @@ Linux - Steps to build and run engauge executable:
 --------------------------------------------------
 These steps build and run, in Linux, the standard engauge executable for digitizing data.
 
-1) Install open source version 5 of the Qt toolkit. This is probably
+1) Install open source version 6 of the Qt toolkit. This is probably
    available for your operating systems as a source tarball, or many packages.
-   If there is a development version of qt5, that should be installed as 
+   If there is a development version of qt6, that should be installed as 
    a minimum
 
      --Package(s)--     --Comment--
-     *qt5-dev*          Qt version 5 toolkit for building engauge
+     *qt6-dev*          Qt version 6 toolkit for building engauge
 
-2) In a mixed Qt4 and Qt5 environment, you need to make sure that the environment
+2) In a mixed Qt4 / Qt5 / Qt6 environment, you need to make sure that the environment
    points to the correct Qt version by using qtchooser and/or settings the
-   environment variable QT_SELECT=qt5
+   environment variable QT_SELECT=6
 
 3) Install package dependencies using your package manager. Different packages
    may be substituted, or additional packages added, according to the feedback
    supplied in step #3. The suggested list of packages for non-Debian and 
-   non-Ubuntu distributions is:
+   non-Ubuntu distributions is: [May need updating]
 
      --Package(s)--     --Comment--
      libfftw3-dev       For computing fourier transforms. Tested with 3.3.3-7
@@ -83,7 +83,7 @@ These steps build and run, in Linux, the standard engauge executable for digitiz
 			'qt.network.ssl: Incompatible version of OpenSSL'
 
    In Debian and Ubuntu distributions, the following packages are required for
-   building Engauge for your own use:
+   building Engauge for your own use: [May need updating]
 
      --Package(s)--     --Comment--
      libfftw3-dev       Required for all distributions
@@ -99,7 +99,7 @@ These steps build and run, in Linux, the standard engauge executable for digitiz
 
    Optional packages that are manually downloaded and installed:
 
-     poppler            Works with version 0.44.0 and 0.45.0
+     poppler            Works with version 25.05.0
 
 4) Run qmake on this file to generate make files. The qmake executable will
    display what functionality will, and what functionality will not, be included 
