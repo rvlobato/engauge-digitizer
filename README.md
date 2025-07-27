@@ -1,4 +1,4 @@
-Engauge Digitizer was written and maintained by Markum Mitchell, whose last project activity was in 2022
+Engauge Digitizer was written and maintained by Mark Mitchell, whose last project activity was in 2022
 and who has in the meantime deleted the official Git repository. Here the files have been restored, 
 with the intention to perform minimal maintenance to keep the software building and running on modern
 Linux systems. If you are interested in more active or wider scope maintenance or in taking over the
